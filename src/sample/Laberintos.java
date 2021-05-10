@@ -107,7 +107,7 @@ public class Laberintos {
         }
 
         void conectarCeldas(String dirCeldaSiguiente) {
-
+            celdasConectadas = celdasConectadas + dirCeldaSiguiente;
         }
     }
 }
