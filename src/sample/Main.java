@@ -24,6 +24,8 @@ public class Main extends Application {
     private Button btnGenerar, btnSolucionar;
     private Label lblInfo, lblTiempo;
 
+    private Dibujo dibujo;
+
     @Override
     public void start(Stage primaryStage) throws Exception{
         //Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
@@ -34,6 +36,8 @@ public class Main extends Application {
         primaryStage.show();
 
         laberinto = new Laberintos(5, 5);
+        dibujo.dibujarLinea(graphicsContext);
+
     }
 
     private void CrearUI() {
@@ -47,6 +51,8 @@ public class Main extends Application {
         btnSolucionar = new Button("Solucionar");
         lblInfo = new Label("Se tardo en resolver:");
         lblTiempo = new Label("00:00");
+
+        dibujo = new Dibujo();
 
         barraLateral.getChildren().addAll(txtAncho, txtAlto, btnGenerar, btnSolucionar, lblInfo, lblTiempo);
         hBox.getChildren().addAll(canvas, barraLateral);
