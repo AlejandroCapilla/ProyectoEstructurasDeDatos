@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+    private static Laberintos laberinto;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -14,6 +15,8 @@ public class Main extends Application {
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.show();
+
+        laberinto = new Laberintos(5, 5);
     }
 
 
