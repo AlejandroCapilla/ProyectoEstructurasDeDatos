@@ -2,7 +2,7 @@ package sample;
 
 public class Laberintos {
     celdaLaverinto[][] laberinto;
-    byte[] celdainicial = new byte[2];
+    private byte[] celdainicial = new byte[2];
 
     Laberintos(int ancho, int alto) {
         laberinto = new celdaLaverinto[ancho][alto];
@@ -12,7 +12,7 @@ public class Laberintos {
         DFSRandomizado(celdainicial);
     }
 
-    void instanciarLaberinto(int ancho, int alto) {
+    private void instanciarLaberinto(int ancho, int alto) {
         for (int i = 0; i < ancho; i++) {
             for (int j = 0; j < alto; j++) {
                 celdaLaverinto celda = new celdaLaverinto();
@@ -21,7 +21,7 @@ public class Laberintos {
         }
     }
 
-    void DFSRandomizado(byte[] celda) {
+    private void DFSRandomizado(byte[] celda) {
         laberinto[celda[0]][celda[1]].marcarVisitada();
         byte[] celdaSiguiente = celdaSiguienteAleatoria(celda);
 
@@ -33,7 +33,7 @@ public class Laberintos {
         return;
     }
 
-    byte[] celdaSiguienteAleatoria(byte[] celdaActual) {
+    private byte[] celdaSiguienteAleatoria(byte[] celdaActual) {
         byte[] celdaSiguiente = new byte[2];
         boolean bandera = false;
         String intentos = "";
@@ -51,7 +51,7 @@ public class Laberintos {
                                 if(!(laberinto[celdaActual[0] - 1][celdaActual[1]].visitada)){
                                     celdaSiguiente[0] = (byte)(celdaActual[0] - 1);
                                     celdaSiguiente[1] = celdaActual[1];
-                                    laberinto[celdaActual[0] - 1][celdaActual[1]].conectarCeldas("1");
+                                    laberinto[celdaActual[0]][celdaActual[1]].conectarCeldas("1");
                                     bandera = true;
                                 }
                             }
@@ -62,7 +62,7 @@ public class Laberintos {
                                 if(!(laberinto[celdaActual[0]][celdaActual[1] + 1].visitada)){
                                     celdaSiguiente[0] = celdaActual[0];
                                     celdaSiguiente[1] = (byte)(celdaActual[1] + 1);
-                                    laberinto[celdaActual[0]][celdaActual[1] + 1].conectarCeldas("2");
+                                    laberinto[celdaActual[0]][celdaActual[1]].conectarCeldas("2");
                                     bandera = true;
                                 }
                             }
@@ -73,7 +73,7 @@ public class Laberintos {
                                 if(!(laberinto[celdaActual[0] + 1][celdaActual[1]].visitada)){
                                     celdaSiguiente[0] = (byte)(celdaActual[0] + 1);
                                     celdaSiguiente[1] = celdaActual[1];
-                                    laberinto[celdaActual[0] + 1][celdaActual[1]].conectarCeldas("3");
+                                    laberinto[celdaActual[0]][celdaActual[1]].conectarCeldas("3");
                                     bandera = true;
                                 }
                             }
@@ -84,7 +84,7 @@ public class Laberintos {
                                 if(!(laberinto[celdaActual[0]][celdaActual[1] - 1].visitada)){
                                     celdaSiguiente[0] = celdaActual[0];
                                     celdaSiguiente[1] = (byte)(celdaActual[1] - 1);
-                                    laberinto[celdaActual[0]][celdaActual[1] - 1].conectarCeldas("4");
+                                    laberinto[celdaActual[0]][celdaActual[1]].conectarCeldas("4");
                                     bandera = true;
                                 }
                             }

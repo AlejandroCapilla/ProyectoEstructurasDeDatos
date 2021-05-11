@@ -35,14 +35,15 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(hBox, 700, 500));
         primaryStage.show();
 
-        laberinto = new Laberintos(5, 5);
-        dibujo.dibujarLinea(graphicsContext);
+        laberinto = new Laberintos(30, 30);
+        dibujo = new Dibujo(graphicsContext, laberinto);
 
+        dibujo.dibujarLaberinto();
     }
 
     private void CrearUI() {
         hBox = new HBox();
-        canvas = new Canvas(500, 250);
+        canvas = new Canvas(500, 500);
         graphicsContext = canvas.getGraphicsContext2D();
         barraLateral = new VBox();
         txtAncho = new TextField();
@@ -51,8 +52,6 @@ public class Main extends Application {
         btnSolucionar = new Button("Solucionar");
         lblInfo = new Label("Se tardo en resolver:");
         lblTiempo = new Label("00:00");
-
-        dibujo = new Dibujo();
 
         barraLateral.getChildren().addAll(txtAncho, txtAlto, btnGenerar, btnSolucionar, lblInfo, lblTiempo);
         hBox.getChildren().addAll(canvas, barraLateral);
