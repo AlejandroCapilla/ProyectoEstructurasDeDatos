@@ -4,6 +4,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public class Dibujo {
+    //Hola a todos
     GraphicsContext gc;
     Laberintos laberintos;
 
