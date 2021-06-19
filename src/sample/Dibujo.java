@@ -3,6 +3,8 @@ package sample;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
+import javax.swing.*;
+
 public class Dibujo {
     //Hola a todos
     GraphicsContext gc;
@@ -11,18 +13,16 @@ public class Dibujo {
     Dibujo(GraphicsContext gc, Laberintos laberintos) {
         this.gc = gc;
         this.laberintos = laberintos;
-        gc.setFill(Color.DARKGRAY);
+        gc.setFill(Color.BLUE);
         gc.fill();
 
     }
-
     void dibujarLaberinto() {
         Byte[] celda = new Byte[2];
         celda[0] = 0;
         celda[1] = 0;
         dibujarDFS(celda);
     }
-
     private void dibujarDFS(Byte[] celdaActual) {
         String c = laberintos.laberinto[celdaActual[0]][celdaActual[1]].celdasConectadas;
 
@@ -63,7 +63,6 @@ public class Dibujo {
                     break;
             }
         }
-
     }
 
     private void dibujarCelda(Byte[] celda, int ancho, int alto) {
@@ -96,4 +95,6 @@ public class Dibujo {
 
 
     }
+
+
 }
