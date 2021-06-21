@@ -1,19 +1,7 @@
 package sample;
 
-import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-
-
 public class Main extends Application {
-    private Laberintos laberinto;
+    private static Laberintos laberinto;
     private HBox hBox;
     private Canvas canvas;
     private GraphicsContext graphicsContext;
@@ -29,7 +17,7 @@ public class Main extends Application {
         //Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
 
         CrearUI();
-        primaryStage.setTitle("Hello World");
+        primaryStage.setTitle("Laberinto");
         primaryStage.setScene(new Scene(hBox, 700, 500));
         primaryStage.show();
 
@@ -53,10 +41,20 @@ public class Main extends Application {
 
         barraLateral.getChildren().addAll(txtAncho, txtAlto, btnGenerar, btnSolucionar, lblInfo, lblTiempo);
         hBox.getChildren().addAll(canvas, barraLateral);
+        //btnSolucionar.setOnAction(laberinto.resolverLaberinto());
+        btnSolucionar.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                new Resolvedor();
+            }
+        });
 
     }
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    private static void launch(String[] args) {
     }
 }
