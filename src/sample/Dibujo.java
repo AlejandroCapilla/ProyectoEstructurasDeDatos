@@ -10,7 +10,7 @@ public class Dibujo {
     Dibujo(GraphicsContext gc, Laberintos laberintos) {
         this.gc = gc;
         this.laberintos = laberintos;
-        gc.setFill(Color.DARKGRAY);
+        gc.setFill(Color.DARKCYAN);
         gc.fill();
 
     }
@@ -92,7 +92,6 @@ public class Dibujo {
                 gc.fillRect((x*10)+1,(y*10)-1, 8, 2);
                 break;
         }
-
-
     }
+
 }

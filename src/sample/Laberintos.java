@@ -26,11 +26,9 @@ public class Laberintos {
         byte[] celdaSiguiente = celdaSiguienteAleatoria(celda);
 
         while (celdaSiguiente != null) {
-            //laberinto[celda[0]][celda[1]].conectarCeldas(celdaSiguiente);
             DFSRandomizado(celdaSiguiente);
             celdaSiguiente = celdaSiguienteAleatoria(celda);
         }
-        return;
     }
 
     private byte[] celdaSiguienteAleatoria(byte[] celdaActual) {
