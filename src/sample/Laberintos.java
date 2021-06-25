@@ -1,5 +1,10 @@
 package sample;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
+
 public class Laberintos {
     celdaLaverinto[][] laberinto;
     private char[][] lab;
@@ -20,7 +25,7 @@ public class Laberintos {
         instanciarLaberinto(ancho, alto);
         DFSRandomizado(celdainicial);
         lab= new char[ancho][alto];
-        InstaLab(ancho,alto);
+        //InstaLab(ancho,alto);
     }
     private void instanciarLaberinto(int ancho, int alto) {
         for (int i = 0; i < ancho; i++) {
@@ -30,7 +35,7 @@ public class Laberintos {
             }
         }
     }
-    private void InstaLab(int ancho,int alto){
+    /*private void InstaLab(int ancho,int alto){
         lab = new char[lab.length][lab[0].length];
         for (int i = 0; i < lab.length; i++)
         {
@@ -39,7 +44,7 @@ public class Laberintos {
                 lab[i][j] = lab[i][j];
             }
         }
-    }
+    }*/
 
     private void DFSRandomizado(byte[] celda) {
         laberinto[celda[0]][celda[1]].marcarVisitada();
@@ -252,6 +257,4 @@ public class Laberintos {
             celdasConectadas = celdasConectadas + dirCeldaSiguiente;
         }
     }
-
-
 }
