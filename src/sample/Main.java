@@ -23,6 +23,7 @@ public class Main extends Application {
     private Label lblInfo, lblTiempo;
 
     private Laberintos laberinto;
+    private Resolvedor solucion;
     private Dibujo dibujo;
 
     @Override
@@ -60,6 +61,7 @@ public class Main extends Application {
 
                     graphicsContext.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
                     dibujo = new Dibujo(graphicsContext, laberinto);
+                    dibujo.dibujarLaberinto();
 
                 }
             }
@@ -68,7 +70,9 @@ public class Main extends Application {
         btnSolucionar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                new Resolvedor();
+                solucion = new Resolvedor(laberinto);
+                //System.out.println(solucion.camino);
+                dibujo.dibujarSolucion(solucion.camino);
             }
         });
     }

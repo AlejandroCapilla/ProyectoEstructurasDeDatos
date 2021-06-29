@@ -7,20 +7,46 @@ public class Dibujo {
     GraphicsContext gc;
     Laberintos laberintos;
 
+
     Dibujo(GraphicsContext gc, Laberintos laberintos) {
         this.gc = gc;
         this.laberintos = laberintos;
         gc.setFill(Color.BLUE);
         gc.fill();
-
-        dibujarLaberinto();
     }
 
-    private void dibujarLaberinto() {
+     void dibujarLaberinto() {
         Byte[] celda = new Byte[2];
         celda[0] = 0;
         celda[1] = 0;
         dibujarDFS(celda);
+    }
+
+    void dibujarSolucion(String solucion) {
+        int x,  y;
+        x = 0;
+        y = 0;
+        gc.setFill(Color.GREEN);
+        for (int i = 0; i < solucion.length(); i++) {
+            switch (solucion.charAt(i)) {
+                case '1':
+                    gc.fillRect((x*10)+1,(y*10)+1, 8, 8);
+                    x = x - 1;
+                    break;
+                case '2':
+                    gc.fillRect((x*10)+1,(y*10)+1, 8, 8);
+                    y = y + 1;
+                    break;
+                case '3':
+                    gc.fillRect((x*10)+1,(y*10)+1, 8, 8);
+                    x = x + 1;
+                    break;
+                case '4':
+                    gc.fillRect((x*10)+1,(y*10)+1, 8, 8);
+                    y = y - 1;
+                    break;
+            }
+        }
     }
 
     private void dibujarDFS(Byte[] celdaActual) {
