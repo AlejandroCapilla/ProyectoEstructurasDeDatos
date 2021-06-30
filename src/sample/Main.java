@@ -30,13 +30,13 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         CrearUI();
         primaryStage.setTitle("Laberinto");
-        primaryStage.setScene(new Scene(hBox, 700, 500));
+        primaryStage.setScene(new Scene(hBox, 1000,600));
         primaryStage.show();
     }
 
     private void CrearUI() {
         hBox = new HBox();
-        canvas = new Canvas(500, 500);
+        canvas = new Canvas(800, 800);
         graphicsContext = canvas.getGraphicsContext2D();
         barraLateral = new VBox();
         txtAncho = new TextField();
@@ -62,7 +62,6 @@ public class Main extends Application {
                     graphicsContext.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
                     dibujo = new Dibujo(graphicsContext, laberinto);
                     dibujo.dibujarLaberinto();
-
                 }
             }
         });
@@ -71,7 +70,7 @@ public class Main extends Application {
             @Override
             public void handle(ActionEvent event) {
                 solucion = new Resolvedor(laberinto);
-                //System.out.println(solucion.camino);
+
                 dibujo.dibujarSolucion(solucion.camino);
             }
         });
@@ -79,6 +78,5 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
-
     }
 }
