@@ -4,6 +4,7 @@ public class Resolvedor {
     private Laberintos laberinto;
     private byte[] celdainicial = new byte[2];
     String camino;
+    Long tiempo;
 
     public Resolvedor(Laberintos laberintos)
     {
@@ -18,6 +19,8 @@ public class Resolvedor {
     }
 
     private void resolverLaberinto(byte[] celda, String camino) {
+        long time_start, time_end;
+        time_start = System.currentTimeMillis();
         laberinto.laberinto[celda[0]][celda[1]].marcarBuscada();
 
         if((celda[0] == laberinto.laberinto.length-1) && (celda[1] == laberinto.laberinto[0].length-1)) {
@@ -67,7 +70,10 @@ public class Resolvedor {
                 }
             }
         }
+        time_end = System.currentTimeMillis();
+        tiempo=time_end - time_start;
     }
+
     /*private String resolverLaberinto(byte[] celda, String camino) {
         laberinto.laberinto[celda[0]][celda[1]].marcarBuscada();
         
@@ -117,6 +123,7 @@ public class Resolvedor {
         }
         return camino;
     }*/
+
 }
 
 

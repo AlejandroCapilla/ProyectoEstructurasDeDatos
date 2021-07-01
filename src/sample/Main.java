@@ -30,7 +30,10 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         CrearUI();
         primaryStage.setTitle("Laberinto");
+        HBox root = new HBox();
         primaryStage.setScene(new Scene(hBox, 1000,600));
+        Scene scene = new Scene(root, 300, 250);
+        scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
         primaryStage.show();
     }
 
@@ -62,6 +65,7 @@ public class Main extends Application {
                     graphicsContext.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
                     dibujo = new Dibujo(graphicsContext, laberinto);
                     dibujo.dibujarLaberinto();
+                    lblTiempo.setText((laberinto.tiempo+" milisegundos"));
                 }
             }
         });
@@ -70,8 +74,9 @@ public class Main extends Application {
             @Override
             public void handle(ActionEvent event) {
                 solucion = new Resolvedor(laberinto);
-
                 dibujo.dibujarSolucion(solucion.camino);
+                lblTiempo.setText("Se tardo en generar la solucion:"+solucion.tiempo+" milisegundos" );
+                System.out.println("Tiempo que tardo en generar la solucion: "+solucion.tiempo+" ms");
             }
         });
     }

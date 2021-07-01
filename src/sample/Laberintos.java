@@ -4,6 +4,7 @@ import javafx.scene.canvas.GraphicsContext;
 
 public class Laberintos {
     celdaLaverinto[][] laberinto;
+    long tiempo;
     //private char[][] lab;
     private byte[] celdainicial = new byte[2];
 
@@ -25,6 +26,8 @@ public class Laberintos {
     }
 
     private void DFSRandomizado(byte[] celda) {
+        long time_start, time_end;
+        time_start = System.currentTimeMillis();
         laberinto[celda[0]][celda[1]].marcarVisitada();
         byte[] celdaSiguiente = celdaSiguienteAleatoria(celda);
 
@@ -33,10 +36,13 @@ public class Laberintos {
             DFSRandomizado(celdaSiguiente);
             celdaSiguiente = celdaSiguienteAleatoria(celda);
         }
+        time_end = System.currentTimeMillis();
+        tiempo=time_end - time_start;
         return;
     }
 
     private byte[] celdaSiguienteAleatoria(byte[] celdaActual) {
+
         byte[] celdaSiguiente = new byte[2];
         boolean bandera = false;
         String intentos = "";
