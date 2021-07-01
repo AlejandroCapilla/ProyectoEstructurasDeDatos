@@ -25,15 +25,15 @@ public class Main extends Application {
     private Laberintos laberinto;
     private Resolvedor solucion;
     private Dibujo dibujo;
+    private Scene scene;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
         CrearUI();
         primaryStage.setTitle("Laberinto");
-        HBox root = new HBox();
-        primaryStage.setScene(new Scene(hBox, 1000,600));
-        Scene scene = new Scene(root, 300, 250);
-        scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
+        scene = new Scene(hBox, 1000, 600);
+        scene.getStylesheets().add(getClass().getResource("css/styles.css").toExternalForm());
+        primaryStage.setScene(scene);
         primaryStage.show();
     }
 
@@ -51,7 +51,6 @@ public class Main extends Application {
 
         barraLateral.getChildren().addAll(txtAncho, txtAlto, btnGenerar, btnSolucionar, lblInfo, lblTiempo);
         hBox.getChildren().addAll(canvas, barraLateral);
-        //btnSolucionar.setOnAction(laberinto.resolverLaberinto());
 
         btnGenerar.setOnAction(new EventHandler<ActionEvent>() {
             @Override

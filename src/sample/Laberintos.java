@@ -1,20 +1,21 @@
 package sample;
 
-import javafx.scene.canvas.GraphicsContext;
-
 public class Laberintos {
     celdaLaverinto[][] laberinto;
     long tiempo;
-    //private char[][] lab;
     private byte[] celdainicial = new byte[2];
+    long time_start, time_end;
 
     Laberintos(int ancho, int alto) {
         laberinto = new celdaLaverinto[ancho][alto];
         celdainicial[0] = 0;
         celdainicial[1] = 0;
+        //tiempo = tiempo que tardo en generar
+        time_start = System.currentTimeMillis();
         instanciarLaberinto(ancho, alto);
         DFSRandomizado(celdainicial);
-        //InstaLab(ancho,alto);
+        time_end = System.currentTimeMillis();
+        tiempo=time_end - time_start;
     }
     private void instanciarLaberinto(int ancho, int alto) {
         for (int i = 0; i < ancho; i++) {
@@ -26,8 +27,8 @@ public class Laberintos {
     }
 
     private void DFSRandomizado(byte[] celda) {
-        long time_start, time_end;
-        time_start = System.currentTimeMillis();
+        //long time_start, time_end;
+
         laberinto[celda[0]][celda[1]].marcarVisitada();
         byte[] celdaSiguiente = celdaSiguienteAleatoria(celda);
 
@@ -36,8 +37,6 @@ public class Laberintos {
             DFSRandomizado(celdaSiguiente);
             celdaSiguiente = celdaSiguienteAleatoria(celda);
         }
-        time_end = System.currentTimeMillis();
-        tiempo=time_end - time_start;
         return;
     }
 
