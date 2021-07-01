@@ -4,7 +4,7 @@ public class Laberintos {
     celdaLaverinto[][] laberinto;
     long tiempo;
     private byte[] celdainicial = new byte[2];
-    long time_start, time_end;
+    private long time_start, time_end;
 
     Laberintos(int ancho, int alto) {
         laberinto = new celdaLaverinto[ancho][alto];

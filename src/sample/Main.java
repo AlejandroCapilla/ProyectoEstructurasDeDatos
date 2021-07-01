@@ -75,7 +75,6 @@ public class Main extends Application {
                 solucion = new Resolvedor(laberinto);
                 dibujo.dibujarSolucion(solucion.camino);
                 lblTiempo.setText("Se tardo en generar la solucion:"+solucion.tiempo+" milisegundos" );
-                System.out.println("Tiempo que tardo en generar la solucion: "+solucion.tiempo+" ms");
             }
         });
     }
